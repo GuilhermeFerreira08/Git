@@ -1,0 +1,287 @@
+<html lang="pt-BR">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<title>Jogo de velha</title>
+	<style type="text/css" media="screen">
+	@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+	main{
+  		background-color:#ADC;
+  		width:55%;
+  		margin-top:-2em;
+  		display:block;
+  		transform:translateX(50%);
+  		box-shadow: 10px 10px 30px grey;
+		}
+	.foo{
+ 		margin-bottom:1em;
+ 		transform:translateX(50%);
+ 		border:2px aqua outset;
+ 		display:inline-grid;
+ 		width:55%;
+ 		border-top-left-radius:50%;
+ 		border-bottom-left-radius:0%;
+  		border-top-right-radius:50%;
+ 		border-bottom-right-radius:0%;
+ 		text-align:center;
+ 		box-shadow:3px 5px 5px #3efbd1;
+ 		background-image: linear-gradient(to bottom left, #3efbd1,lightgreen); 
+	}
+	.foo h1{
+		grid-item:span 3;
+		 font-size: 36px;
+ 		word-wrap: break-word;
+ 		font-family:Lucida;
+ 		color:indigo;
+	}
+	.tab{
+		width:25em;
+		height:25em;
+		border-radius:5%;
+		margin: 2em auto 1em auto;
+		padding: 2em 2em;
+		display:grid;
+		grid-gap:0.5em;
+		grid-template-columns: 33% 33% 33%; 
+		grid-template-rows: 25% 25% 25% 25%;
+		justify-content:space-evenly;
+		background:#CC0C;
+		box-sizing:border-box;
+	}
+	.cell{
+  		border-radius:0.2em; 
+  		padding-top:0em;
+  		padding-left:.5em;
+  		background-image:linear-gradient(to bottom right,#777966, lightgrey);
+  		box-shadow:2px 5px 2px 0px rgba(42,56,14,0.8) inset; 
+		font-family: 'Permanent Marker', cursive;  
+  		font-size:68px;
+	}
+	.tab #dez{
+  		background-color:hsl(167, 96%, 61%);
+  		grid-column:span 3;
+  		height:70px;
+  		margin-top:.3em;
+  		box-shadow:0px 0px 10px 0px blue inset;
+  		display:inline-block;
+  		border-radius:0.3em; 
+	}	
+	input[type="radio"]:focus{
+  		cursor:pointer;
+	}
+	.wrapper{
+  		max-width:6.5em;
+  		height:4.3em;
+  		padding-top:2px;
+  		padding-left:5px;
+  		background-color:#AAA;
+  		margin-top:5px;
+  		margin-bottom:5px;
+  		vertical-align:middle;
+  		box-sizing:border-box; 
+  		display:inline-block;
+	}
+	.wrapper:hover{
+ 		transform:scale(1.25,1.25);
+  		transform-origin: center;
+  		transition:2s ease-in;
+  		box-shadow: 1px 1px 3px black;
+	}
+	.circle{
+  		margin-right:25%;  
+  		margin-left:15%;
+  		border:4px outset #abf94c;
+	}
+	.cross{
+ 		margin-left:-15%;
+ 		margin-right:-25%; 
+ 		border:4px outset #f06c82; 
+	}
+	#bottom{
+  		visibility:hidden;
+  		background-color:#ebabcf;
+  		max-width:10em;
+  		max-height:3em;
+  		font-size:28px;
+  		align-item:center;
+	}
+	h2{
+		font-family:Lucida;
+  		font-size:36px;
+  		text-align:center;
+  		color:purple;
+  		text-indent:1em;
+  	}
+	h3{
+		text-indent:50%;
+		font-family: 'Permanent Marker',serif;
+		font-style:oblique;
+		font-size: 100px;
+	}
+	#scores{
+  		display:flex;
+  		flex-direction:column;
+  		flex-wrap:unwrap;
+  		flex-content:space-between;
+	}
+	.score{
+		margin: 0em 2em 2em 2em;
+		background-color:#ebabd1;
+	}
+	#scoreX,#scoreY{
+  		display:inline;
+  		margin:50%;
+	}
+</style>
+</head>
+<body>
+  <div class='foo w3-animate-opacity'><h1>Tic-Tac-Toe</h1></div>
+  <main>
+	<div class="tab">
+    <div class="cell" id="um"><canvas></canvas></div>
+		<div class="cell" id="dois"></div>
+		<div class="cell" id="tres"></div>
+		<div class="cell" id="quatro"></div>
+		<div class="cell" id="cinco"></div>
+		<div class="cell" id="seis"></div>
+		<div class="cell" id="sete"></div>
+		<div class="cell" id="oito"></div>
+    <div class="cell" id="nove"></div>
+    <div id="dez">
+      <form id="btchoose">
+        
+      <div class='wrapper circle'> 
+        <label for="markY"> 
+       <input id="markY" type="radio" name= "choose" value="O">
+        </label>   
+          <span>
+            <svg height="100" width="200">
+            <circle cx="40" cy="15" r="12" stroke-width="6" stroke="#5ad9e6" fill="transparent"/> 
+            </svg>
+          </span>
+      </div>
+        
+     <div class='wrapper cross'>
+       <label for="markX">
+      <input id="markX" type="radio" name="choose" value="X">
+    </label>
+        <span><svg height="80" width="100">
+     <polyline points="20,5 60,30" style="fill:none;stroke:red;stroke-width:5" />
+<polyline points="60,5 20,30" style="fill:none;stroke:red;stroke-width:5" />
+  </svg>
+     </label>
+      </div>
+        </form>
+    </div>
+	</div>
+    <h2>Scores</h2>
+    <div id="scores">         
+     <div class="score">
+       <h3>X</h3>
+       <div id='scoreX'>0</div>
+    </div>
+      <div class="score">
+        <h3>O</h3>
+        <div id='scoreY'>0</div>
+     </div>
+     <div id="bottom">
+       <h3>Hey! Selecione o jogo!</h3>
+     </div>
+  </div>
+    
+  </main>
+  
+  <script type="text/javascript">
+  	var chX;var chY;var casa;var ch=null;var lastMark;
+	chX = document.getElementById("markX");
+  	chX.addEventListener("change",function(){
+  		ch = document.querySelector("#markX").value;  //document.querySelector("#markY").disabled=true;
+  	}
+	);
+
+	chY = document.getElementById("markY");
+	chY.addEventListener("change",function(){
+	ch = document.querySelector("#markY").value; //document.querySelector("#markX").disabled = true;
+	}
+	);
+
+	function verificarCasa(mark){
+  		if ((mark.innerHTML =='X') || (mark.innerHTML =='O')){
+    		return false;
+    }
+  		return true;
+	}
+
+var jogo = {l1:Array(3),l2:Array(3),l3:Array(3)};
+
+function verificarJogo(ch){
+   let winner = null	;
+   
+   linha:[jogo['l1'],jogo['l2'],jogo['l3']].map(linha => linha.slice(0,3) == [ch,ch,ch]){winner = ch; return win;},
+   
+   coluna:function(ch){
+     for(i=0;i<3;i++){
+        if([jogo['l1'][i],jogo['l2'][i],jogo['l3'][i]] == [ch,ch,ch]){win = ch; return win;}
+     } 
+   }, 
+   
+   diagonal:function(ch){
+     if([jogo.l1[0],jogo.l2[1],jogo.l3[2]] == [ch,ch,ch]){win = ch; return win;}
+   },
+   
+   inverse:function(ch){
+     if([jogo.l1[2],jogo.l2[1],jogo.l3[0]] == [ch,ch,ch]){win= ch; return win;}
+  } 
+}
+
+function preencherJogo(mark,ch){
+  const ref ={'um':1,'dois':2,'tres':3,'quatro':4,'cinco':5,'seis':6,'sete':7,'oito':8,'nove':9};
+  let Id = ref[mark.id]; 
+  let lin = Math.ceil(Id/3);// dividir por t e arredondar pra cima
+  if(lin<=1){
+    jogo.l1[Id-1] = ch;
+  }
+  else if(lin>2){
+    jogo.l3[Id-1] = ch;
+  }
+  else{
+    jogo.l2[Id-1] = ch;
+  }
+}
+
+function assinalar(){
+  if (ch!=null){
+    let id = this.id;
+    var mark = document.getElementById(id);
+    if(verificarCasa(mark)){
+        if(lastMark != ch){
+          mark.innerHTML = ch; 
+          document.getElementById("bottom").style.visibility='hidden';
+          if(ch == 'O'){ document.getElementById(id).style.color ="lightgreen";
+          }else{document.getElementById(id).style.color = "magenta";}
+        }
+        lastMark = ch;
+        preencherJogo(mark,ch);
+          if((verificarJogo(ch).linha || verificarJogo(ch).coluna || verificarJogo(ch).diagonal || verificarJogo(ch).inversa) === ch){
+            if(ch === 'X') {document.getElementById('scoreX').innerHTML += 1};
+            else if(ch ==='O') {document.getElementById('scoreY').innerHTML += 1};
+          }
+          
+ 		}
+ 	}
+    	else{
+    		document.getElementById("bottom").style.visibility='visible';   
+    	}
+  }
+
+	casas = document.querySelectorAll(".cell");
+	casas.forEach(function(item){
+  		item.addEventListener("click",assinalar);
+  	});
+
+  </script>
+ </body>
+</html>
+  
+
